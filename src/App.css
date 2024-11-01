@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    margin: 0;
+    padding: 0;
+  }
+
 
 .card {
     width: 15rem;
@@ -20,6 +26,54 @@
     width: 60%;
     padding: 10px;
     margin: 0 auto;
+}
+
+
+
+
+
+/* ======== navbar======== */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:#EAE1DF;
+    position: sticky;
+    top: 0;
+    min-height: 70px;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    
+}
+
+nav h1 {
+    color: #545E56;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    margin-right: 0.5rem; 
+}
+
+.search-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #545E56; /* Cor do botão */
+    color: white;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #917C78; /* Cor mais escura ao passar o mouse */
 }
 
 
