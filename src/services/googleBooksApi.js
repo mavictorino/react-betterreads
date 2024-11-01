@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const GOOGLE_BOOKS_API = 'https://www.googleapis.com/books/v1/volumes';
-const API_KEY = 'AIzaSyCbYyRveD5TdYoIitzHuekFKpfpJKh5iHA';
+const apiKey = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
 /* Search for books on Google Books */
 export const searchBooks = async (query) => {
@@ -10,7 +10,7 @@ export const searchBooks = async (query) => {
     const response = await axios.get(GOOGLE_BOOKS_API, {
       params: {
         q: query,
-        key: API_KEY, 
+        key: apiKey, 
       },
     });
     return response.data.items || []; // Return array of books if found
