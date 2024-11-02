@@ -1,25 +1,30 @@
-import React from 'react';
-
-
-
-import './App.css'
-import BookCard from './components/BookCard'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Navbar from './components/Navbar';
+import BookSearch from './components/BookSearch';
+import './App.css';
 
-
-function App() {
-  
+const App = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <>
-      <Navbar />
+    <div>
+      <Navbar 
+        searchQuery={searchQuery} 
+        setSearchQuery={setSearchQuery} 
+      />
+      <BookSearch 
+        searchQuery={searchQuery} 
+        setBooks={setBooks} 
+        setIsLoading={setIsLoading} 
+        books={books}
+        
       
-      <h1>Initial Setup</h1>
-      
-      <BookCard />
+      />
+    </div>
+  );
+};
 
-    </>
-  )
-}
-
-export default App
+export default App;

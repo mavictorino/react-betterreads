@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
 
-const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-
+const Navbar = ({ searchQuery, setSearchQuery }) => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // adicionar a lógica para lidar com a pesquisa, como redirecionar ou filtrar
+    
     console.log("Searching for:", searchQuery);
   };
 
   return (
     <nav>
-      <h1>Navbar</h1>
+      <h1>BetterReads</h1>
       <form onSubmit={handleSearchSubmit} className="search-form">
         <input 
           type="text" 
-          placeholder="Search..." 
+          id="search"
+          placeholder="Search for books..." 
           value={searchQuery}
           onChange={handleSearchChange}
           className="search-input"
