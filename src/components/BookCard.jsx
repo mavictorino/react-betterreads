@@ -1,6 +1,6 @@
 import React from "react";
 
-function BookCard({ title, authors, imageUrl }) {
+function BookCard({ title, authors, imageUrl, onSave }) {
   return (
     <div className="card">
       {imageUrl ? (
@@ -14,7 +14,8 @@ function BookCard({ title, authors, imageUrl }) {
         <p className="card-authors">
           {authors ? authors : "No authors available"}
         </p>
-        <button className="btn btn-details">See more details</button>
+        <button className="btn-details">See more details</button>
+        <button className="btn-save" onClick={onSave}>Save to your Library</button>
       </div>
     </div>
   );

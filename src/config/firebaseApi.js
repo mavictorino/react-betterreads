@@ -1,2 +1,8 @@
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, get, update, remove } from "firebase/database";
+import firebaseConfig from "../services/firebaseConfig";
 
-export const API_URL = "https://react-betterreads-default-rtdb.europe-west1.firebasedatabase.app";
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+export { database, ref, set, get, update, remove };

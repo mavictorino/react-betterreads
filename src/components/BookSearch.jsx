@@ -3,7 +3,22 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BookCard from './BookCard';
 
+import { database, ref, set } from '../config/firebaseApi'
+
 const BookSearch = ({ searchQuery, setSearchQuery, books, setBooks, setIsLoading }) => {
+  
+  const handleSavedBook = (book) => {
+    const bookRef = ref(database, `books/${book.id}`);
+
+    set(bookRef, {
+      title: book.volumeInfo.title,
+      authors: book.volumeInfo.authors || ["Unknown"], 
+      coverImage: book.volumeInfo.imageLinks?.thumbnail || "",
+    })
+    .then(() => alert("Book saved!"))
+    .catch((error) => console.error("Error saving book", error));
+  }
+  
   
   useEffect(() => {
     if (!searchQuery) {
@@ -39,10 +54,11 @@ const BookSearch = ({ searchQuery, setSearchQuery, books, setBooks, setIsLoading
             title={book.volumeInfo.title}
             authors={book.volumeInfo.authors || []}
             imageUrl={book.volumeInfo.imageLinks?.thumbnail || "https://placehold.co/400"}
+            onSave={() => handleSavedBook(book)}
           />
         ))
       ) : (
-        <p>Oops, no books were found.</p>
+        <p>Ops, no books were found.</p>
       )}
     </div>
   );
