@@ -3,8 +3,9 @@ import axios from 'axios';
 import Navbar from './components/Navbar';
 import BookSearch from './components/BookSearch';
 import './App.css';
+import Library from './pages/Library';
 
-const App = () => {
+function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,9 +21,9 @@ const App = () => {
         setBooks={setBooks} 
         setIsLoading={setIsLoading} 
         books={books}
-        
-      
+              
       />
+      <Library /> 
     </div>
   );
 };
