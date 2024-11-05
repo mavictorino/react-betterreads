@@ -75,7 +75,16 @@
 }
 
 .library {
+    flex: 1; 
+    padding: 20px; 
+    background-color: white; 
     display: flex;
+    flex-wrap: wrap;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh; 
 }
 
 /* ======== navbar======== */

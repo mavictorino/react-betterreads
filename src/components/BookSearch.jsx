@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BookCard from './BookCard';
-
 import { database, ref, set } from '../config/firebaseApi'
 
 const BookSearch = ({ searchQuery, setSearchQuery, books, setBooks, setIsLoading }) => {
   
+  const [hasSearched, setHasSearched] = useState(false);
+
   const handleSavedBook = (book) => {
     const bookRef = ref(database, `books/${book.id}`);
 
@@ -23,11 +24,13 @@ const BookSearch = ({ searchQuery, setSearchQuery, books, setBooks, setIsLoading
   useEffect(() => {
     if (!searchQuery) {
       setBooks([]); 
+      setHasSearched(false);
       return;
     }
 
     const timer = setTimeout(() => {
       setIsLoading(true);
+      setHasSearched(true);
       axios
         .get(
           `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${import.meta.env.VITE_GOOGLE_BOOKS_API_KEY}`
@@ -58,7 +61,7 @@ const BookSearch = ({ searchQuery, setSearchQuery, books, setBooks, setIsLoading
           />
         ))
       ) : (
-        <p>Ops, no books were found.</p>
+        hasSearched && <p>Ops, no books were found.</p>
       )}
     </div>
   );

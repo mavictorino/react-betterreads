@@ -1,6 +1,7 @@
 import React from "react";
 import LightbulbCircleIcon from '@mui/icons-material/LightbulbCircle';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
+import CottageIcon from '@mui/icons-material/Cottage';
 
 
 
@@ -9,6 +10,12 @@ import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
 
 export const SidebarData = [
+    {
+        title: "Homepage",
+        icon: <CottageIcon />,
+        link: "/Homepage",
+    },
+    
     {
         title: "My Library",
         icon: <CollectionsBookmarkIcon />,

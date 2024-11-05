@@ -6,6 +6,8 @@ import BookSearch from './components/BookSearch';
 import './App.css';
 import Library from './pages/Library';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SearchForm from './components/SearchForm';
+import AboutPage from './pages/About';
 
 
 function App() {
@@ -14,32 +16,40 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div>
-      <Navbar 
-        searchQuery={searchQuery} 
-        setSearchQuery={setSearchQuery} 
+    <BrowserRouter>
+      <Navbar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
       />
 
-      <Sidebar />
 
-      <BookSearch 
-        searchQuery={searchQuery} 
-        setBooks={setBooks} 
-        setIsLoading={setIsLoading} 
-        books={books}
-              
-      />
-      <BrowserRouter>
+      <div className='app-container'>
+
+        <Sidebar />
+
+        <BookSearch
+          searchQuery={searchQuery}
+          setBooks={setBooks}
+          setIsLoading={setIsLoading}
+          books={books}
+
+        />
+
         <Routes>
+          <Route path="/Homepage" element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
+          
           <Route path="/Library" element={<Library />} />
+
+          <Route path="/About" element={<AboutPage />} />
 
 
 
         </Routes>
-      
-      </BrowserRouter>
-       
-    </div>
+
+
+
+      </div>
+    </BrowserRouter>
   );
 };
 
