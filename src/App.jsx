@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 import BookSearch from './components/BookSearch';
 import './App.css';
 import Library from './pages/Library';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,6 +19,9 @@ function App() {
         searchQuery={searchQuery} 
         setSearchQuery={setSearchQuery} 
       />
+
+      <Sidebar />
+
       <BookSearch 
         searchQuery={searchQuery} 
         setBooks={setBooks} 
@@ -23,7 +29,16 @@ function App() {
         books={books}
               
       />
-      <Library /> 
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Library" element={<Library />} />
+
+
+
+        </Routes>
+      
+      </BrowserRouter>
+       
     </div>
   );
 };
