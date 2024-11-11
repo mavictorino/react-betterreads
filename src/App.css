@@ -87,6 +87,14 @@
     min-height: 100vh; 
 }
 
+.homepage {
+    display: flex;
+}
+
+.homepage h2 {
+    
+}
+
 /* ======== navbar======== */
 
 nav {

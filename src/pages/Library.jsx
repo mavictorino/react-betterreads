@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUserLibrary } from '../config/firebaseApi';
+import { getUserLibrary, updateUserLibraryBook } from '../config/firebaseApi';
 import BookCard from '../components/BookCard';
 
 const Library = () => {
@@ -14,16 +14,27 @@ const Library = () => {
         getBooks();
     }, []);
 
+    const handleUpdate = async (bookId, updatedData) => {
+        await updateUserLibraryBook(bookId, updatedData); // Update in Firebase
+        setSavedBooks(prevBooks => 
+            prevBooks.map(book => book.id === bookId ? { ...book, ...updatedData } : book)
+        );
+    };
+
     return (
         <div className='library'>
             <h2>Your Library</h2>
             {savedBooks.length > 0 ? (
                 savedBooks.map((book) => (
                     <BookCard
-                    key={book.id}
-                    title={book.title}
-                    authors={book.authors}
-                    imageUrl={book.coverImage}
+                        key={book.id}
+                        bookId={book.id}
+                        title={book.title}
+                        authors={book.authors}
+                        imageUrl={book.coverImage}
+                        review={book.review}
+                        rating={book.rating}
+                        onUpdate={(updatedData) => handleUpdate(book.id, updatedData)}
                     />
                 ))
             ) : (

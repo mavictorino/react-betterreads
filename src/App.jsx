@@ -36,7 +36,7 @@ function App() {
         />
 
         <Routes>
-          <Route path="/Homepage" element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
+          <Route path="/" element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
           
           <Route path="/Library" element={<Library />} />
 

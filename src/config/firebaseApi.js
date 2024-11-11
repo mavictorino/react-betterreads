@@ -21,4 +21,16 @@ export const getUserLibrary = async () => {
     }
 };
 
+export const updateUserLibraryBook = async (bookId, updatedData) => {
+    const db = getDatabase();
+    const bookRef = ref(db, `library/${bookId}`);
+    
+    try {
+      await update(bookRef, updatedData);
+      console.log("Book updated successfully in Firebase.");
+    } catch (error) {
+      console.error("Error updating book in Firebase:", error);
+    }
+  };
+
 export { database, ref, set, get, update, remove };

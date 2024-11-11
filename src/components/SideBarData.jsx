@@ -13,7 +13,7 @@ export const SidebarData = [
     {
         title: "Homepage",
         icon: <CottageIcon />,
-        link: "/Homepage",
+        link: "/",
     },
     
     {
