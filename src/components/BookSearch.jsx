@@ -1,29 +1,30 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import BookCard from "./BookCard";
+import { database, ref, set } from "../config/firebaseApi";
 
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import BookCard from './BookCard';
-import { database, ref, set } from '../config/firebaseApi'
-
-const BookSearch = ({ searchQuery, setSearchQuery, books, setBooks, setIsLoading }) => {
-  
+const BookSearch = ({ searchQuery, setBooks, setIsLoading, books }) => {
   const [hasSearched, setHasSearched] = useState(false);
 
   const handleSavedBook = (book) => {
-    const bookRef = ref(database, `books/${book.id}`);
+    const bookId = book.id; // Unique ID from Google Books API
+    const bookRef = ref(database, `library/${bookId}`); // Save under "library" node
 
-    set(bookRef, {
+    const bookData = {
+      id: bookId,
       title: book.volumeInfo.title,
-      authors: book.volumeInfo.authors || ["Unknown"], 
+      authors: book.volumeInfo.authors || ["Unknown"],
       coverImage: book.volumeInfo.imageLinks?.thumbnail || "",
-    })
-    .then(() => alert("Book saved!"))
-    .catch((error) => console.error("Error saving book", error));
-  }
-  
-  
+    };
+
+    set(bookRef, bookData)
+      .then(() => alert("Book saved!"))
+      .catch((error) => console.error("Error saving book:", error));
+  };
+
   useEffect(() => {
     if (!searchQuery) {
-      setBooks([]); 
+      setBooks([]);
       setHasSearched(false);
       return;
     }
@@ -43,25 +44,25 @@ const BookSearch = ({ searchQuery, setSearchQuery, books, setBooks, setIsLoading
           console.error("Error fetching books:", error);
           setIsLoading(false);
         });
-    }, 500);  // using time interval to avoid multiple requests to api and enhance performance
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
   return (
     <div className="book-list">
-      {books.length > 0 ? (
+      {hasSearched && !books.length ? (
+        <p>No books found.</p>
+      ) : (
         books.map((book) => (
           <BookCard
             key={book.id}
             title={book.volumeInfo.title}
             authors={book.volumeInfo.authors || []}
-            imageUrl={book.volumeInfo.imageLinks?.thumbnail || "https://placehold.co/400"}
-            onSave={() => handleSavedBook(book)}
+            imageUrl={book.volumeInfo.imageLinks?.thumbnail || ""}
+            onSave={() => handleSavedBook(book)} // Show "Save" button for API books
           />
         ))
-      ) : (
-        hasSearched && <p>Ops, no books were found.</p>
       )}
     </div>
   );
