@@ -5,6 +5,7 @@ function BookCard({
   title,
   authors,
   imageUrl,
+  onMoreDetails,
   review,
   rating,
   onUpdate,
@@ -72,6 +73,9 @@ function BookCard({
             <button onClick={handleUpdate} className="btn-save">
               Save Review
             </button>
+            <button className="btn-details" onClick={onMoreDetails}>
+          More Details
+        </button>
           </>
         )}
       </div>

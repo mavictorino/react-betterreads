@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import BookSearch from './components/BookSearch';
 import './App.css';
+import BookDetails from './pages/BookDetails';
 import Library from './pages/Library';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchForm from './components/SearchForm';
@@ -37,6 +38,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
+
+          <Route path="/book-details/:bookId" element={<BookDetails />} />
           
           <Route path="/Library" element={<Library />} />
 

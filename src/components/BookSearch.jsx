@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookCard from "./BookCard";
+import { useNavigate } from "react-router-dom";
 import { database, ref, set } from "../config/firebaseApi";
 
 const BookSearch = ({ searchQuery, setBooks, setIsLoading, books }) => {
   const [hasSearched, setHasSearched] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMoreDetails = async (bookId) => {
+    try {
+      const response = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes/${bookId}?key=${import.meta.env.VITE_GOOGLE_BOOKS_API_KEY}`
+      );
+      const bookDetails = response.data;
+      navigate(`/book-details/${bookId}`, { state: { bookDetails } });
+    } catch (error) {
+      console.error("Error fetching book details:", error);
+    }
+  };
 
   const handleSavedBook = (book) => {
     const bookId = book.id; // Unique ID from Google Books API
@@ -60,7 +74,8 @@ const BookSearch = ({ searchQuery, setBooks, setIsLoading, books }) => {
             title={book.volumeInfo.title}
             authors={book.volumeInfo.authors || []}
             imageUrl={book.volumeInfo.imageLinks?.thumbnail || ""}
-            onSave={() => handleSavedBook(book)} // Show "Save" button for API books
+            onSave={() => handleSavedBook(book)} 
+            onMoreDetails={() => handleMoreDetails(book.id)}
           />
         ))
       )}
