@@ -65,6 +65,7 @@ const Library = () => {
             imageUrl={book.coverImage}
             review={book.review}
             rating={book.rating}
+            showReviewRating={true}
             onUpdate={handleUpdate}
             onDeleteReview={handleDeleteReview}
           />

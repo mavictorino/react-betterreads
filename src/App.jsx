@@ -9,6 +9,8 @@ import Library from './pages/Library';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchForm from './components/SearchForm';
 import AboutPage from './pages/About';
+import { MantineProvider } from '@mantine/core';
+
 
 
 function App() {
@@ -17,42 +19,44 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <BrowserRouter>
-      <Navbar
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-
-
-      <div className='app-container'>
-
-        <Sidebar />
-
-        <BookSearch
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <BrowserRouter>
+        <Navbar
           searchQuery={searchQuery}
-          setBooks={setBooks}
-          setIsLoading={setIsLoading}
-          books={books}
-
+          setSearchQuery={setSearchQuery}
         />
 
-        <Routes>
-          <Route path="/" element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
 
-          <Route path="/book-details/:bookId" element={<BookDetails />} />
-          
-          <Route path="/Library" element={<Library />} />
+        <div className='app-container'>
 
-          <Route path="/About" element={<AboutPage />} />
+          <Sidebar />
+
+          <BookSearch
+            searchQuery={searchQuery}
+            setBooks={setBooks}
+            setIsLoading={setIsLoading}
+            books={books}
+
+          />
+
+          <Routes>
+            <Route path="/" element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
+
+            <Route path="/book-details/:bookId" element={<BookDetails />} />
+
+            <Route path="/Library" element={<Library />} />
+
+            <Route path="/About" element={<AboutPage />} />
 
 
 
-        </Routes>
+          </Routes>
 
 
 
-      </div>
-    </BrowserRouter>
+        </div>
+      </BrowserRouter>
+    </MantineProvider>
   );
 };
 

@@ -21,8 +21,8 @@ const BookSearch = ({ searchQuery, setBooks, setIsLoading, books }) => {
   };
 
   const handleSavedBook = (book) => {
-    const bookId = book.id; // Unique ID from Google Books API
-    const bookRef = ref(database, `library/${bookId}`); // Save under "library" node
+    const bookId = book.id;
+    const bookRef = ref(database, `library/${bookId}`);
 
     const bookData = {
       id: bookId,
@@ -74,7 +74,7 @@ const BookSearch = ({ searchQuery, setBooks, setIsLoading, books }) => {
             title={book.volumeInfo.title}
             authors={book.volumeInfo.authors || []}
             imageUrl={book.volumeInfo.imageLinks?.thumbnail || ""}
-            onSave={() => handleSavedBook(book)} 
+            onSave={() => handleSavedBook(book)}
             onMoreDetails={() => handleMoreDetails(book.id)}
           />
         ))
