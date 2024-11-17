@@ -24,7 +24,7 @@ const Library = () => {
   }, []);
 
   const handleUpdate = async (bookId, updatedData) => {
-    console.log("Updating book:", bookId, updatedData); // Debugging
+    
     try {
       await updateUserLibraryBook(bookId, updatedData);
       setSavedBooks((prevBooks) =>
@@ -50,7 +50,7 @@ const Library = () => {
   };
 
   const handleDeleteReview = async (bookId) => {
-    console.log("Deleting review for book:", bookId); // Debugging
+    
     try {
       await deleteUserLibraryBookReview(bookId);
       setSavedBooks((prevBooks) =>
