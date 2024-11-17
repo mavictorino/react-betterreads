@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getUserLibrary, updateUserLibraryBook, deleteUserLibraryBookReview } from "../config/firebaseApi";
+import { getUserLibrary, updateUserLibraryBook, deleteUserLibraryBookReview, deleteBookFromFirebase } from "../config/firebaseApi";
 import BookCard from "../components/BookCard";
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const Library = () => {
   const [savedBooks, setSavedBooks] = useState([]);
@@ -36,6 +37,18 @@ const Library = () => {
     }
   };
 
+  const handleDeleteBook = async (bookId) => {
+    try {
+      await deleteBookFromFirebase(bookId); // 
+      setSavedBooks((prevBooks) =>
+        prevBooks.filter((book) => book.id !== bookId) 
+      );
+      console.log(`Book with ID ${bookId} removed successfully.`);
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  };
+
   const handleDeleteReview = async (bookId) => {
     console.log("Deleting review for book:", bookId); // Debugging
     try {
@@ -55,26 +68,23 @@ const Library = () => {
   return (
     <div className="library">
       <h2>Your Library</h2>
-      {savedBooks.length > 0 ? (
-        savedBooks.map((book) => (
-          <BookCard
-            key={book.id}
-            bookId={book.id}
-            title={book.title}
-            authors={book.authors}
-            imageUrl={book.coverImage}
-            review={book.review}
-            rating={book.rating}
-            showReviewRating={true}
-            onUpdate={handleUpdate}
-            onDeleteReview={handleDeleteReview}
-          />
-        ))
-      ) : (
-        <p>You have no books saved in your library.</p>
-      )}
+      {savedBooks.map((book) => (
+        <BookCard
+          key={book.id}
+          bookId={book.id}
+          title={book.title}
+          authors={book.authors}
+          imageUrl={book.coverImage}
+          review={book.review}
+          rating={book.rating}
+          showReviewRating={true}
+          onUpdate={handleUpdate}
+          onDeleteReview={handleDeleteReview}
+          onDeleteBookFromFirebase={handleDeleteBook}
+        />
+      ))}
     </div>
   );
-};
+}
 
 export default Library;

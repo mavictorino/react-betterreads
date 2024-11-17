@@ -1,3 +1,4 @@
+import DeleteIcon from '@mui/icons-material/Delete'
 import React, { useState } from "react";
 
 
@@ -13,6 +14,7 @@ const BookCard = ({
   onDeleteReview,
   onSave,
   onMoreDetails,
+  onDeleteBookFromFirebase,
 }) => {
   const [newReview, setNewReview] = useState(review || "");
   const [newRating, setNewRating] = useState(rating || 1);
@@ -26,6 +28,12 @@ const BookCard = ({
   const handleDelete = () => {
     if (onDeleteReview) {
       onDeleteReview(bookId);
+    }
+  };
+
+  const handleDeleteBook = () => {
+    if (onDeleteBookFromFirebase) {
+      onDeleteBookFromFirebase(bookId);
     }
   };
 
@@ -57,8 +65,12 @@ const BookCard = ({
               onClick={handleDelete}
               className="book-card-button book-card-delete-button"
             >
-              Delete Review
+              Update Review
             </button>
+            <DeleteIcon className="delete-icon"onClick={handleDeleteBook} />
+
+
+
           </div>
         ) : showReviewRating ? (
           <div>
@@ -87,6 +99,7 @@ const BookCard = ({
             </button>
           </div>
         ) : null}
+
 
         {!showReviewRating && onSave && (
           <button

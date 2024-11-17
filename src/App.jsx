@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
 import BookSearch from './components/BookSearch';
 import './App.css';
 import BookDetails from './pages/BookDetails';
@@ -29,7 +29,7 @@ function App() {
 
         <div className='app-container'>
 
-          <Sidebar />
+          
 
           <BookSearch
             searchQuery={searchQuery}
@@ -52,7 +52,7 @@ function App() {
 
           </Routes>
 
-
+          <Footer />
 
         </div>
       </BrowserRouter>

@@ -9,9 +9,9 @@ import CottageIcon from '@mui/icons-material/Cottage';
 
 
 
-export const SidebarData = [
+export const NavbarData = [
     {
-        title: "Homepage",
+        title: "Home",
         icon: <CottageIcon />,
         link: "/",
     },
@@ -19,14 +19,14 @@ export const SidebarData = [
     {
         title: "My Library",
         icon: <CollectionsBookmarkIcon />,
-        link: "/Library"
+        link: "/library"
         
     },
    
     {
         title: "About",
         icon: <LightbulbCircleIcon />,
-        link: "/About"
+        link: "/about"
         
     }
 ]

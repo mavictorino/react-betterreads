@@ -46,4 +46,17 @@ export const updateUserLibraryBook = async (bookId, updatedData) => {
     }
   };
 
+  export const deleteBookFromFirebase = async (bookId) => {
+    const db = getDatabase();
+    const bookRef = ref(db, `library/${bookId}`);
+  
+    try {
+      await remove(bookRef);
+      console.log(`Book with ID ${bookId} deleted successfully from Firebase.`);
+    } catch (error) {
+      console.error("Error deleting book from Firebase:", error);
+      throw error; 
+    }
+  };
+
 export { database, ref, set, get, update, remove };
