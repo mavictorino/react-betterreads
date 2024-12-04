@@ -2,7 +2,7 @@
 
 BetterReads is a Single Page Application (SPA) designed to make organizing your personal library and discovering new books effortless and enjoyable. With an intuitive interface and dynamic integration with the Google Books API, BetterReads allows you to explore, manage, and personalize your book collection with ease.
 
-![Books Image](/assets/books.jpg)
+![Books Image](./public/assets/books.jpg)
 
 #### Check the deployed version here: https://react-betterreads.netlify.app/
 
