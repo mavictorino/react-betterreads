@@ -13,7 +13,7 @@ export const NavbarData = [
     {
         title: "Home",
         icon: <CottageIcon />,
-        link: "/",
+        link: "/home",
     },
     
     {
