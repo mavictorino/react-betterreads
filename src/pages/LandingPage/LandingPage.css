@@ -1,0 +1,179 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.landing-container {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #facec4, #548167);
+    height: 100vh;
+    color: #fff2f2;
+    padding: 1rem 0.3rem 0.3rem 0.3rem;
+    overflow: hidden;
+}
+
+
+.landing-header {
+    max-width: 600px;
+    margin-bottom: 0.3rem;
+}
+
+.landing-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.landing-header p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.custom-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-button a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.custom-button:hover {
+    transform: scale(1.05);
+}
+
+.custom-button:first-child {
+    background-color: #1f4420;
+    /* Green */
+}
+
+.custom-button:first-child:hover {
+    background-color: #45a049;
+}
+
+.custom-button:last-child {
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+.custom-button:last-child:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.landing-image-container {
+    
+    width: 80%;
+    height: 50vh;
+    
+}
+
+.landing-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(56, 87, 69);
+    border-radius: 10px;
+  }
+  
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(66, 77, 58);
+    border-radius: 10px;
+  }
+
+@media (max-width: 600px) {
+    .landing-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .landing-header p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .custom-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .landing-image-container {
+        max-height: 40vh;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .landing-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .landing-header p {
+        font-size: 1.1rem;
+    }
+
+    .custom-button {
+        padding: 0.7rem 1.3rem;
+        font-size: 1rem;
+    }
+
+    .landing-image-container {
+        max-height: 45vh;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .landing-header h1 {
+        font-size: 3rem;
+    }
+
+    .landing-header p {
+        font-size: 1.3rem;
+    }
+
+    .custom-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .landing-image-container {
+        max-height: 50vh;
+    }
+}

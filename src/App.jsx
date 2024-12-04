@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import BookSearch from './components/BookSearch';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { MantineProvider } from '@mantine/core';
 import './App.css';
 import BookDetails from './pages/BookDetails';
 import Library from './pages/Library';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchForm from './components/SearchForm';
 import AboutPage from './pages/About';
-import { MantineProvider } from '@mantine/core';
-
-
+import LandingPage from './pages/LandingPage/LandingPage';
+import Layout from './components/Layout'; 
+import '../src/pages/LandingPage/LandingPage.css';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,43 +18,21 @@ function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <BrowserRouter>
-        <Navbar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-
-
-        <div className='app-container'>
-
-          
-
-          <BookSearch
-            searchQuery={searchQuery}
-            setBooks={setBooks}
-            setIsLoading={setIsLoading}
-            books={books}
-
-          />
-
+        <Layout>
           <Routes>
-            <Route path="/" element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
-
+            <Route path="/" element={<LandingPage />} />
+            <Route
+              path="/home"
+              element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />}
+            />
             <Route path="/book-details/:bookId" element={<BookDetails />} />
-
             <Route path="/library" element={<Library />} />
-
             <Route path="/about" element={<AboutPage />} />
-
-
-
           </Routes>
-
-          <Footer />
-
-        </div>
+        </Layout>
       </BrowserRouter>
     </MantineProvider>
   );
-};
+}
 
 export default App;

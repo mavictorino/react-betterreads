@@ -124,13 +124,13 @@
 }
 
 .delete-icon {
-  position: absolute; /* Position relative to the card */
-  bottom: 16px; /* Adjust distance from the bottom */
-  right: 16px; /* Adjust distance from the right */
-  color: #d32f2f; /* Red color for delete */
-  cursor: pointer; /* Add pointer for better UX */
-  font-size: 24px; /* Adjust size */
-  transition: transform 0.2s ease; /* Add hover effect */
+  position: absolute;
+  bottom: 16px; 
+  right: 16px; 
+  color: #d32f2f;
+  cursor: pointer; 
+  font-size: 24px;
+  transition: transform 0.2s ease; 
 }
 
 .delete-icon:hover {
