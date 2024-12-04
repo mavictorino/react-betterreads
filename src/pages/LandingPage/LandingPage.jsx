@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Title, Text, Image, Group } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import './LandingPage.css';
 
@@ -21,7 +20,7 @@ const LandingPage = () => {
         </header>
         <div className="landing-image-container">
           <img
-            src="../public/books.jpg"
+            src="/assets/books.jpg"
             alt="Landing illustration"
             className="landing-image"
           />
