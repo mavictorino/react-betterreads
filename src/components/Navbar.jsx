@@ -5,7 +5,10 @@ import { NavbarData } from './NavbarData';
 function Navbar() {
   return (
     <nav>
-      <h1>BetterReads</h1>
+      <div className="navbar-brand">
+        <img src="/assets/books2.png" alt="Logo" className="navbar-logo" />
+        <h1>BetterReads</h1>
+      </div>
       <ul className="navbar-links">
         {NavbarData.map((item, index) => (
           <li key={index} className="navbar-item">
