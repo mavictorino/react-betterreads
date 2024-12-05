@@ -5,9 +5,10 @@ import './App.css';
 import BookDetails from './pages/BookDetails';
 import Library from './pages/Library';
 import SearchForm from './components/SearchForm';
+import BookSearch from './components/BookSearch'
 import AboutPage from './pages/About';
 import LandingPage from './pages/LandingPage/LandingPage';
-import Layout from './components/Layout'; 
+import Layout from './components/Layout';
 import '../src/pages/LandingPage/LandingPage.css';
 
 function App() {
@@ -23,7 +24,17 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route
               path="/home"
-              element={<SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />}
+              element={
+                <>
+                  <SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+                  <BookSearch
+                    searchQuery={searchQuery}
+                    setBooks={setBooks}
+                    setIsLoading={setIsLoading}
+                    books={books}
+                  />
+                </>
+              }
             />
             <Route path="/book-details/:bookId" element={<BookDetails />} />
             <Route path="/library" element={<Library />} />
