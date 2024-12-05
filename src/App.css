@@ -255,6 +255,72 @@ nav h1 {
   background-color: #917C78;
 }
 
+.book-details {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #d3b3ac;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Quicksand', sans-serif;
+}
+
+.back-button {
+  background-color: #545E56;
+  color: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #f59572;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.details-container img.book-cover {
+  max-width: 200px;
+  border-radius: 5px;
+  align-self: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.text-details {
+  text-align: left;
+  line-height: 1.8;
+
+}
+
+.text-details h1 {
+  font-size: 1.8rem;
+  color: #545e56;
+  margin-bottom: 1rem;
+}
+
+.text-details p {
+  margin: 0.5rem 0;
+  color: #333;
+
+}
+
+.text-details strong {
+  color:#545e56;
+}
+
+.no-details {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #545e56;
+}
 
 .footer {
   font-size: 15px;
